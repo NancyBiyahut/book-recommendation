@@ -1,0 +1,89 @@
+{% load  static %}
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Playfair+Display&family=Rozha+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'recommend.css' %}">
+</head>
+<body>
+     <div class="container">
+    <h1 class="heading">Recommended Books</h1>
+    <div class ="tile">
+    <ul>
+        {% for book in books %}
+            <div class="card">
+            <li>
+                <h2 class="title" >{{ book.bookTitle }}</h2>
+                <img src="{{ book.imageUrlM|default_if_none:'static/image.jpg' }}" alt="Image" class="photo">
+                <p>Author: {{ book.bookAuthor }}</p>
+                <p>Year of Publication: {{ book.yearOfPublication }}</p>
+            </li>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+    <a href="{% url 'home' %}">Back to Home</a>
+</div>
+</body>
+</html>
+
+ -->
+
+ {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Playfair+Display&family=Rozha+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'recommend.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Recommended Books</h1>
+        <div class="tile">
+            <ul>
+                {% for book in books %}
+                <div class="card">
+                    <li>
+                        <h2 class="title">{{ book.bookTitle }}</h2>
+                        <img class="photo" src="{{ book.imageUrlM }}" alt="Image" data-default="{% static 'default_image.jpg' }">
+                        <p>Author: {{ book.bookAuthor }}</p>
+                        <p>Year of Publication: {{ book.yearOfPublication }}</p>
+                    </li>
+                </div>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+
+    <script>
+        var images = document.querySelectorAll(".photo");
+
+        images.forEach(function(image) {
+            var img = image.getAttribute("src");
+            var defaultImage = image.getAttribute("data-default");
+
+            var loadedImage = new Image();
+            loadedImage.src = img;
+
+            loadedImage.onload = function() {
+                if (loadedImage.width === 1 && loadedImage.height === 1) {
+                    image.src = defaultImage;
+                } else {
+                    image.src = img;
+                }
+            };
+
+            loadedImage.onerror = function() {
+                image.src = defaultImage;
+            };
+        });
+    </script>
+</body>
+</html>

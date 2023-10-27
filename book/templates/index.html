@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Rozha+One&family=Rubik+Wet+Paint&family=Signika+Negative&display=swap" rel="stylesheet">
+    <title>Recommend</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <p class="line1">enter the book</p>
+       <div class="wrapper">
+            <p class="line2">see the</p>
+           <div class="words">
+               <span style="font-family: 'Dancing Script';">magic</span>
+               <span style="font-family: 'Rozha One';">magic</span>
+               <span style="font-family: 'Rubik Wet Paint';">magic</span>
+               <span style="font-family: 'Signika Negative';">magic</span>
+               <span style="font-family: 'Rozha One';">magic</span>
+           </div>
+       </div>
+    </div>
+
+
+
+        <div class="search-bar">
+            <form method="post" action="{% url 'recommend' %}">
+                {% csrf_token %}
+                <input type="text" name="movie" placeholder="Enter a movie title" id="inputTxt">
+                <button type="submit" class="recommend-button">Recommend</button>
+                
+            </form>
+       </div>
+
+       <div class="hello-container">
+        <div class="hello">HELLO</div>
+    </div>
+
+</body>
+</html>
+
